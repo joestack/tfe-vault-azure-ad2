@@ -39,3 +39,7 @@ module "network" {
 #  subnet_id = "${module.network.azurerm_subnet.subnet.0.id}"
 #  #subnet_id = "${module.network.azurerm_subnet.0.id}"
 #}
+
+output "sn_id" {
+  value = "data.azurerm_subnet.subnet.0.id"
+}
