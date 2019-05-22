@@ -40,6 +40,33 @@ module "ad-create" {
   #subnet_id = "${module.network.azurerm_subnet.0.id}"
 }
 
+resource "azurerm_subnet" "subnet" {
+  name  = "subnet1"
+  address_prefix = "10.0.1.0/24"
+  resource_group_name = "${var.resource_group_name}"
+  virtual_network_name = "acctvnet"
+  network_security_group_id = "${azurerm_network_security_group.rdp.id}"
+}
+
+resource "azurerm_network_security_group" "rdp" {
+  depends_on          = ["module.network"]
+  name                = "rdp"
+  location            = "${var.location}"
+  resource_group_name = "${var.resource_group_name}"
+
+  security_rule {
+    name                       = "rdp"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "3389"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
+}
 output "sn_id" {
   value = "${module.network.vnet_subnets[0]}"
 }
