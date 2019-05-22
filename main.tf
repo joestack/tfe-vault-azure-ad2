@@ -41,5 +41,5 @@ module "network" {
 #}
 
 output "sn_id" {
-  value = "${module.network.vn_subnets}"
+  value = "${module.network.vnet_subnets}"
 }
