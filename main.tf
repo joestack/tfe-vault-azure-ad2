@@ -34,7 +34,7 @@ module "ad-create" {
   location = "${var.location}"
   prefix = "${var.prefix}"
 #  #private_ip_address = "${cidrhost(module.network.subnet1, 10)}"
-  private_ip_address = "10.0.1.10"
+  private_ip_address = "10.0.1.11"
   resource_group_name = "${var.resource_group_name}"
   subnet_id = "${module.network.vnet_subnets[0]}"
   #subnet_id = "${module.network.azurerm_subnet.0.id}"
@@ -69,4 +69,7 @@ resource "azurerm_network_security_group" "rdp" {
 }
 output "sn_id" {
   value = "${module.network.vnet_subnets[0]}"
+}
+output "ad_public_ip" {
+  value = "${module.ad_public_ip}"
 }
