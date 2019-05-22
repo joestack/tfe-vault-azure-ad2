@@ -41,5 +41,5 @@ module "network" {
 #}
 
 output "sn_id" {
-  value = "${data.azurerm_subnet.subnet.0.id}"
+  value = "${module.network.vn_subnets}"
 }
