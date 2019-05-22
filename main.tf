@@ -36,6 +36,6 @@ module "ad-create" {
 #  #private_ip_address = "${cidrhost(module.network.subnet1, 10)}"
   private_ip_address = "10.0.1.10"
   resource_group_name = "${var.resource_group_name}"
-  subnet_id = "${module.network.azurerm_subnet.subnet.id[0]}"
+  subnet_id = "${module.network.azurerm_subnet.subnet.0.id}"
   #subnet_id = "${module.network.azurerm_subnet.0.id}"
 }
