@@ -71,5 +71,5 @@ output "sn_id" {
   value = "${module.network.vnet_subnets[0]}"
 }
 output "ad_public_ip" {
-  value = "${module.ad_public_ip}"
+  value = "${module.ad-create.ad_public_ip}"
 }
